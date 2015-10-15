@@ -27,7 +27,7 @@
             while (!sorted)
             {
                 var first = array[0];
-                var last = array[array.Length - 1];
+                var last = array[array.Length - 1]; //
 
             }
 
