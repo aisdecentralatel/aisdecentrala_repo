@@ -1,6 +1,6 @@
 ﻿namespace heapsort
 {
-    class Heap
+    class Heap//klasa heapa
     {
         static public int[] CreateFromArray(int[] array)
         // Zwraca tablice zamieniona na kopiec
