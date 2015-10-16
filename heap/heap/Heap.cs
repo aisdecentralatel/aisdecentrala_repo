@@ -27,9 +27,8 @@
             while (!sorted)
             {
                 var first = array[0];
-                var last = array[array.Length - 1]; 
-                // dodalem komentarz sratata
-
+                var last = array[array.Length - 1]; //
+                //
             }
 
 
