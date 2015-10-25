@@ -1,32 +1,41 @@
 ﻿using System;
+using System.Diagnostics;
 
-namespace heapsort
+namespace heap
 {
     class Program
     {
         static void Main(string[] args)
         {
-            long n = 0;
-            Console.Write("Podaj ilosc liczb: ");
-            n = int.Parse(Console.ReadLine());
-            int[] tab = new int[n];
+            long A = 0;
+            Heap heap = new Heap();
+
+            Console.Write("Podaj ilosc liczb A: ");         
+            A = int.Parse(Console.ReadLine());
+            Console.Write("Podaj max wartosc M: ");
+            int M = int.Parse(Console.ReadLine());
+
+
+            Console.Write("Podaj ilosc liczb B: ");
+            int B = int.Parse(Console.ReadLine());
+            Console.Write("Podaj max wartosc N: ");
+            int N = int.Parse(Console.ReadLine());
+
             Random r = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i < n; i++)
+
+            var time = Stopwatch.StartNew();
+            for(var i=A;i>0;i--)
             {
-
-                tab[i] = r.Next(0, 1000);
-
-
-                //                Console.Write("{0} ", tab[i]);
+                heap.Push(r.Next(0,M));
             }
-            Console.WriteLine("\nTworzenie kopca :)");
-            Console.WriteLine("stworzyłem");
-            tab = Heap.CreateFromArray(tab);
-
-            for (int i = 0; i < n; i++)
+            for(var i= B;i>0;i--)
             {
-                Console.Write("{0} ", tab[i]);
+                heap.DeleteMax();
+                heap.Push(r.Next(0, N));
             }
+            time.Stop();
+            var timeMs = time.ElapsedMilliseconds;
+            Console.WriteLine("Uplynelo {0} ms", timeMs);
             Console.ReadLine();
         }
     }
