@@ -20,7 +20,7 @@ namespace heapsort
                 //                Console.Write("{0} ", tab[i]);
             }
             Console.WriteLine("\nTworzenie kopca :)");
-            Console.WriteLine("stworzyłem");
+          //  Console.WriteLine("stworzyłem");
             tab = Heap.CreateFromArray(tab);
 
             for (int i = 0; i < n; i++)
