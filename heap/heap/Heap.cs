@@ -1,38 +1,83 @@
-﻿namespace heapsort
+﻿namespace heap
 {
-    class Heap//klasa heapa
+    class Heap
     {
-        static public int[] CreateFromArray(int[] array)
-        // Zwraca tablice zamieniona na kopiec
+        // elementy stogu
+        Element[] elements;
+        int size = 0;
+        // konstruktor stogu
+        public Heap()
         {
-            for (var i = 0; i < array.Length - 1; i++)
-            {
-                var index = i + 1;
-
-                while (array[index / 2] > array[index] && index >= 1)
-                {
-                    var tmp = array[index / 2];
-                    array[index / 2] = array[index];
-                    array[index] = tmp;
-                    index /= 2;
-                }
-            }
-            return array;
+            elements = new Element[size + 1]; // tworzy tablice elementów (jak size==0 to 1-elementowa
         }
-        static public int[] HeapSort(int[] array)
-        // Sortuje utworzony kopiec
+        public void Push(int data)
         {
-            var sorted = false;
-            var index = array.Length - 1;
-            while (!sorted)
+            size++;
+            // rozszerzanie miejsca w tablicy
+            if (size > elements.Length)
             {
-                var first = array[0];
-                var last = array[array.Length - 1]; //
-                // dodalem komentarz
+                Element[] new_elements = new Element[elements.Length +1]; // podwajanie miejsca w tablicy jeśli brakuje
+                elements.CopyTo(new_elements, 0);
+                elements = new_elements;
             }
 
+            elements[size - 1] = data;
+            var index = size - 1;
+            while (elements[index] > elements[index / 2] && index >= 1)
+            {
+                var tmp = elements[index / 2];
+                elements[index / 2] = elements[index];
+                elements[index] = tmp;
+                index /= 2;
+            }
+        }
+        public void DeleteMax()
+            // metoda usuwający największy element ze stogu
+        {
+            size--;
 
-            return array;
+            var last = elements[size];
+            elements[size] = 0;
+            var index = 0;
+            elements[0] = last; // przenoszenie ostatniego elementu do korzenia
+
+            // odbudowywanie struktury stogu
+            while (last < elements[(2 * index) + 1] || last < elements[(index + 1) * 2])
+            {
+                if (elements[(2 * index) + 1] > elements[(index + 1) * 2])
+                {
+                    var tmp = elements[(2 * index) + 1];
+                    elements[(2 * index) + 1] = last;
+                    elements[index] = tmp;
+                    index = (2 * index) + 1;
+                }
+                else
+                {
+                    var tmp = elements[(index + 1) * 2];
+                    elements[(index + 1) * 2] = last;
+                    elements[index] = tmp;
+                    index = (index + 1) * 2;
+
+                }
+                if ((2 * index) + 1 > size || (index + 1) * 2 > size)
+                    break;
+            }
+        }
+        public int Size()
+        {
+            return size;
+        }
+        public int this[int index]
+            // Indeksator dający dostęp do elementu - np. heap[0] == heap.elements[0]
+        {
+            get
+            {
+                return this.elements[index];
+            }
+            set
+            {
+                this.elements[index] = value;
+            }
         }
     }
 }
