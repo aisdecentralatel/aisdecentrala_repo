@@ -24,7 +24,8 @@ namespace ConsoleApplication1
         {
             for (int i = 0; i < 20; i++)
 
-                Console.WriteLine(Random_Variables.losuj(10));
+                Console.WriteLine(Random_Variables.losuj((double)1/(double)30));
+            Console.ReadLine();
         }
     }
 }

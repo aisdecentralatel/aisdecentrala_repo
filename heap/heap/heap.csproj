@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Element.cs" />
     <Compile Include="Heap.cs" />
+    <Compile Include="TList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

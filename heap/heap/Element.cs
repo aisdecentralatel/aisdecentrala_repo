@@ -12,6 +12,7 @@ namespace heap
 
 
         public Element(int key)
+            // Konstruktor klasy Element
         {
             this.key = key;
         }

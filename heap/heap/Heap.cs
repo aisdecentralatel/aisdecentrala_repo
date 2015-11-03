@@ -1,4 +1,7 @@
-﻿namespace heap
+﻿using System;
+
+
+namespace heap
 {
     class Heap
     {
@@ -10,15 +13,20 @@
         {
             elements = new Element[size + 1]; // tworzy tablice elementów (jak size==0 to 1-elementowa
         }
+        public Heap(int size)
+        {
+            elements = new Element[size];
+        }
         public void Push(int data)
         {
             size++;
             // rozszerzanie miejsca w tablicy
             if (size > elements.Length)
             {
-                Element[] new_elements = new Element[elements.Length +1]; // podwajanie miejsca w tablicy jeśli brakuje
-                elements.CopyTo(new_elements, 0);
-                elements = new_elements;
+                Element[] new_elements = new Element[elements.Length*2]; // podwajanie miejsca w tablicy jeśli brakuje
+                
+                    elements.CopyTo(new_elements, 0);
+                    elements = new_elements;
             }
 
             elements[size - 1] = data;
