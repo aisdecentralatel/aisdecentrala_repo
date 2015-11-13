@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Distribution
+namespace Centrala
 {
      abstract class Distribution
     {
-        double lambda;
-        
-         
-         double Gettime(double time)
+         protected double lambda;
+         protected string name;
+
+       public double Gettime(double time)
         {
-            return (-(1 / lambda) * Math.Log(1-time));
+            return (-(1 / lambda) * Math.Log(1-time));// rozkład wykładniczy
+
         }
+       public string Getname() { return (name); }
     }
 }
