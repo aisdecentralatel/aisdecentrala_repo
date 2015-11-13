@@ -8,6 +8,7 @@ namespace Centrala
 {
     class Program
     {
+        static public int time = 0;
         static void Main(string[] args)
         {
         }
