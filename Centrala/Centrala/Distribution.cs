@@ -8,7 +8,12 @@ namespace Distribution
 {
      abstract class Distribution
     {
-         private double lambda;
-
+        double lambda;
+        
+         
+         double Gettime(double time)
+        {
+            return (-(1 / lambda) * Math.Log(1-time));
+        }
     }
 }
