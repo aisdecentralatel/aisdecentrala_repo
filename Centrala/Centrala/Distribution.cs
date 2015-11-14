@@ -11,9 +11,9 @@ namespace Centrala
   
 
 
-       public double Gettime(double lambda, double time)
+       public double Gettime(double lambda, double y)
         {
-            return (-(1 / lambda) * Math.Log(1-time));// rozkład wykładniczy
+            return (-(1 / lambda) * Math.Log(1-y));// rozkład wykładniczy
 
         }
 
