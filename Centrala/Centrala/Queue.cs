@@ -32,5 +32,13 @@ namespace Centrala
             Sortapplication(r);
             size--;
         }
+        public Application Gettochannel()
+        {
+            Application r = queue[0];
+            Sortapplication(0);
+            size--;
+            return r;
+            
+        }
     }
 }
