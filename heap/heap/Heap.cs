@@ -3,27 +3,27 @@
 
 namespace heap
 {
-    class Heap
+    class Heap<D>
     {
         // elementy stogu
-        Element[] elements;
+        Element<D>[] elements;
         int size = 0;
         // konstruktor stogu
         public Heap()
         {
-            elements = new Element[size + 1]; // tworzy tablice elementów (jak size==0 to 1-elementowa
+            elements = new Element<D>[size + 1]; // tworzy tablice elementów (jak size==0 to 1-elementowa
         }
         public Heap(int size)
         {
-            elements = new Element[size];
+            elements = new Element<D>[size];
         }
-        public void Push(int data)
+        public void Push(int key, int data)
         {
             size++;
             // rozszerzanie miejsca w tablicy
             if (size > elements.Length)
             {
-                Element[] new_elements = new Element[elements.Length*2]; // podwajanie miejsca w tablicy jeśli brakuje
+                Element<D>[] new_elements = new Element<D>[elements.Length*2]; // podwajanie miejsca w tablicy jeśli brakuje
                 
                     elements.CopyTo(new_elements, 0);
                     elements = new_elements;
@@ -75,16 +75,12 @@ namespace heap
         {
             return size;
         }
-        public int this[int index]
+        public D this[int index]
             // Indeksator dający dostęp do elementu - np. heap[0] == heap.elements[0]
         {
             get
             {
                 return this.elements[index];
-            }
-            set
-            {
-                this.elements[index] = value;
             }
         }
     }

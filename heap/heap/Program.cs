@@ -14,8 +14,8 @@ namespace heap
             A = int.Parse(Console.ReadLine());
             Console.Write("Podaj max wartosc M: ");
             int M = int.Parse(Console.ReadLine());
-            Heap heap = new Heap(A);
-            TList list = new TList();
+            Heap<int> heap = new Heap<int>(A);
+            TList<int> list = new TList<int>();
 
             Console.Write("Podaj ilosc liczb B: ");
             int B = int.Parse(Console.ReadLine());
@@ -27,12 +27,14 @@ namespace heap
             var time = Stopwatch.StartNew();
             for(var i=A;i>0;i--)
             {
-                heap.Push(r.Next(0,M));
+                var tmp = r.Next(0, M);
+                heap.Push(tmp,tmp);
             }
             for(var i= B;i>0;i--)
             {
+                var tmp = r.Next(0, N);
                 heap.DeleteMax();
-                heap.Push(r.Next(0, N));
+                heap.Push(tmp,tmp);
             }
             time.Stop();
             var timeMs = time.ElapsedMilliseconds;
@@ -43,12 +45,14 @@ namespace heap
             time = Stopwatch.StartNew();
             for (var i = A; i > 0; i--)
             {
-                list.Push(r.Next(0, M));
+                var tmp = r.Next(0, M);
+                list.Push(tmp,tmp);
             }
             for (var i = B; i > 0; i--)
             {
                 list.DeleteAt(list.MinIndex());
-                heap.Push(r.Next(0, N));
+                var tmp = r.Next(0, N);
+                list.Push(tmp, tmp);
             }
             time.Stop();
             timeMs = time.ElapsedMilliseconds;

@@ -10,31 +10,23 @@ namespace Centrala
     {
         // dane strumienia
         string name;
-        int lambda;
+        int length_lambda;
+        int pause_lamba;
         int max_duration;
-        int pause_time;
         int stream_number;
         
-        public Stream(string cName, int cLamba, int cMax_duration, int cPause_time, int cStream_number)
+        public Stream(string cName, int cLength_Lamba, int cPause_lambda, int cMax_duration,  int cStream_number)
         {
             name = cName;
-            lambda = cLamba;
+            length_lambda = cLength_Lamba;
+            pause_lamba = cPause_lambda;
             max_duration = cMax_duration;
-            pause_time = cPause_time;
             stream_number = cStream_number;
         }
         public Application NewApp()
         {
             Application app = new Application(Program.time, max_duration, 0, stream_number);
             return app;
-        }
-        public int PauseTime()
-        {
-            return pause_time;
-        }
-        public void ChangePauseTime(int pause)
-        {
-            pause_time = pause;
         }
 
     }
