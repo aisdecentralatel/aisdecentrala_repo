@@ -12,9 +12,7 @@ namespace Centrala
         static void Main(string[] args)
         {
 
-            Temporary k = new Temporary(1);
 
-           // Temporary l = new Temporary(1);
         }
     }
 }
