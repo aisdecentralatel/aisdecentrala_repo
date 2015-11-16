@@ -11,8 +11,7 @@ namespace Centrala
         static public int time = 0;
         static void Main(string[] args)
         {
-
-
+          //  Temporary k =new Temporary();
         }
     }
 }

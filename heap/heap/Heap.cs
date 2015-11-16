@@ -29,9 +29,9 @@ namespace heap
                     elements = new_elements;
             }
 
-            elements[size - 1] = data;
-            var index = size - 1;
-            while (elements[index] > elements[index / 2] && index >= 1)
+            elements[size] = data;
+            var index = size;
+            while (elements[index] > elements[index / 2] && index > 1)
             {
                 var tmp = elements[index / 2];
                 elements[index / 2] = elements[index];
@@ -52,22 +52,22 @@ namespace heap
             // odbudowywanie struktury stogu
             while (last < elements[(2 * index) + 1] || last < elements[(index + 1) * 2])
             {
-                if (elements[(2 * index) + 1] > elements[(index + 1) * 2])
+                if (elements[(2 * index)] > elements[(2*index + 1)])
                 {
-                    var tmp = elements[(2 * index) + 1];
-                    elements[(2 * index) + 1] = last;
+                    var tmp = elements[(2 * index)];
+                    elements[(2 * index)] = last;
                     elements[index] = tmp;
-                    index = (2 * index) + 1;
+                    index = (2 * index);
                 }
                 else
                 {
-                    var tmp = elements[(index + 1) * 2];
-                    elements[(index + 1) * 2] = last;
+                    var tmp = elements[(2*index + 1)];
+                    elements[(2*index + 1)] = last;
                     elements[index] = tmp;
-                    index = (index + 1) * 2;
+                    index = (2*index + 1);
 
                 }
-                if ((2 * index) + 1 > size || (index + 1) * 2 > size)
+                if ((2 * index) + 1 > size || (index + 1) > size)
                     break;
             }
         }
