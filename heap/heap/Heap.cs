@@ -21,7 +21,7 @@ namespace heap
         {
             size++;
             // rozszerzanie miejsca w tablicy
-            if (size > elements.Length)
+            if (size >= elements.Length)
             {
                 Element<D>[] new_elements = new Element<D>[elements.Length*2]; // podwajanie miejsca w tablicy jeśli brakuje
                 
@@ -31,7 +31,7 @@ namespace heap
 
             elements[size] = data;
             var index = size;
-            while (elements[index] > elements[index / 2] && index > 1)
+            while (index > 1 && elements[index] > elements[index / 2])
             {
                 var tmp = elements[index / 2];
                 elements[index / 2] = elements[index];
@@ -42,15 +42,15 @@ namespace heap
         public void DeleteMax()
             // metoda usuwający największy element ze stogu
         {
-            size--;
+           
 
             var last = elements[size];
             elements[size] = 0;
-            var index = 0;
-            elements[0] = last; // przenoszenie ostatniego elementu do korzenia
+            var index = 1;
+            elements[1] = last; // przenoszenie ostatniego elementu do korzenia
 
             // odbudowywanie struktury stogu
-            while (last < elements[(2 * index) + 1] || last < elements[(index + 1) * 2])
+            while (last < elements[(2 * index)] || last < elements[(2*index + 1)])
             {
                 if (elements[(2 * index)] > elements[(2*index + 1)])
                 {
@@ -67,9 +67,11 @@ namespace heap
                     index = (2*index + 1);
 
                 }
-                if ((2 * index) + 1 > size || (index + 1) > size)
+                if ((2 * index) > size || (2*index + 1) > size)
                     break;
+                
             }
+            size--;
         }
         public int Size()
         {
